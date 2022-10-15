@@ -18,4 +18,4 @@ function createGalleryItemsMarkup() {
         </a>`
     }).join('')
 }
-const gallery = new SimpleLightbox('.gallery a' ,{captionsData: 'alt',captionsDelay: '250s'});
+const gallery = new SimpleLightbox('.gallery a' ,{captionsData: 'alt', captionDelay: 250});

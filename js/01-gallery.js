@@ -25,23 +25,29 @@ function createGalleryItemsMarkup() {
     }).join('')
 }
 
+
 function onGalleryClick(e) {
     if (e.target.nodeName !== 'IMG') {
         return
     }
     e.target.src = e.target.dataset.source
-    
-    document.addEventListener('keydown', onEscPress)
     instance = basicLightbox.create(`
         <div class="modal">
             <img width="800" height="600" src= ${e.target.src} alt=${e.target.alt}>
         </div>
-        `)
-    return instance.show();
+        `, 
+        {
+            onShow: (instance) => {document.addEventListener('keydown', onEscPress)},
+            onClose: (instance) => {document.removeEventListener('keydown', onEscPress)}
+        })
+    instance.show();
+    
 }
+
+
 function onEscPress(e) {
     if (e.code === 'Escape') {
         instance.close()
     }
-    document.removeEventListener('keydown', onEscPress)
+    console.log(e.code);
 }
