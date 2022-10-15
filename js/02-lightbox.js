@@ -9,13 +9,14 @@ refs.gallery.innerHTML = createGalleryItemsMarkup()
 
 function createGalleryItemsMarkup() {
     return galleryItems.map(item => {
-        return `<a class="gallery__item" href="${item.original}">
-          <img
-            class="gallery__image"
-            src="${item.preview}"
-            alt="${item.description}"
-          />
-        </a>`
+        return `<li><a class="gallery__item" href="${item.original}">
+        <img
+          class="gallery__image"
+          src="${item.preview}"
+          alt="${item.description}"
+        />
+        </a></li>`
     }).join('')
+    
 }
 const gallery = new SimpleLightbox('.gallery a' ,{captionsData: 'alt', captionDelay: 250});
